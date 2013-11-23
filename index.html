@@ -7,7 +7,12 @@
     <meta name="description" content="Qiaomu.github.com : 个人主页以及bug" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+	<script type="text/javascript">
+	function submit()
+	{
+		document.getElementById("submitCode").readOnly = "true";
+	}
+	</script>
     <title>Aries & Balla</title>
   </head>
 
@@ -49,68 +54,9 @@ because our editor uses a textarea
 for input,
 and your browser does not allow
 a textarea inside a textarea.
-<p>
-<input type="text" name="user" />
-<input type="submit" value="Submit the Bugs" />
 </p>
-<p>
-<textarea readonly="true" rows="100" cols="80" style="resize:none;">
-abcdefghijklmnopqrstabcdefghijklmnopqrstabcdefghijklmnopqrstabcdefghijklmnopqrst
-#include <iostream>
-
-using namespace std;
-
-struct  Bug {
-	int a;
-	int b;
-};
-
-int main(){
-	int N, M, max=0;
-	int tmp;
-	Bug	bugs[105],tree[105],count[105];
-	cin>>N>>M;
-	while( N!=-1 || M!=-1) {
-		if(M==0){
-			cout<<0<<endl;
-			cin>>N>>M;
-			continue;
-		}
-		// 输入bugs数目和brain数目
-		for(int i=1; i<=N; i++){
-			cin>>tmp>>bugs[i].b;
-			bugs[i].a = tmp/20+(tmp%20?1:0);
-		}
-		// 输入tree的结构路径
-		for(int j=1; j<N; j++){
-			cin>>tree[j].a>>tree[j].b;
-		}
-		// 使用count记录使用情况
-		if( M>=bugs[1].a){
-			count[1].a = M-bugs[1].a;
-			count[1].b = bugs[1].b;
-			max = bugs[1].b;
-		} else {
-			cout<<0<<endl;
-			cin>>N>>M;
-			continue;
-		}
-		for(int k=1; k<N; k++){
-			if( count[tree[k].a].a && count[tree[k].a].a>=bugs[tree[k].b].a){
-				count[tree[k].b].a = count[tree[k].a].a-bugs[tree[k].b].a;
-				count[tree[k].b].b = count[tree[k].a].b+bugs[tree[k].b].b;
-				max = max>=count[tree[k].b].b?max:count[tree[k].b].b;
-			} else {
-				count[tree[k].b].a = 0;
-				count[tree[k].b].b = count[tree[k].a].b;
-			}
-		}
-		cout<<max<<endl;
-		cin>>N>>M;
-	}
-	return 0;
-}</textarea>
-<p>
+<p><textarea id="submitCode" rows="50" cols="85" style="resize:none;"></textarea></p>
+<p><input type="button" value="Submit the Bugs" onclick="submit()"/></p>
 </section>
 
 <section id="Support or Contact" class="inner">
