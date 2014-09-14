@@ -1,4 +1,11 @@
 qiaomu.github.com
 =================
 
-个人主页以及bug
+
+Name：      Aries
+
+Birth：     1988 / 02 / 05
+
+Education：	HFUT
+
+Discribe:   My Homepage
